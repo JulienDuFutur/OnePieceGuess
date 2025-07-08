@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devine le personnage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Qui est-ce ?</h1>
+  <div class="image-placeholder">
+    <!-- Image à ajouter dans le dossier assets/ sous le nom goku.png -->
+    <p style="color: gray;">Ajoutez une image dans assets/goku.png</p>
+  </div>
+  <br/>
+  <input type="text" id="guess" placeholder="Entrez le nom..." />
+  <br/>
+  <button onclick="checkGuess()">Valider</button>
+  <p id="message"></p>
+  <script src="script.js"></script>
+</body>
+</html>
