@@ -67,7 +67,7 @@ function pickRandomCharacter() {
   characterName = random.name.toLowerCase();
   imageElement.src = `assets/${random.file}`;
   inputElement.value = "";
-  resultElement.textContent = "";
+  //resultElement.textContent = "";
   remainingTries = 3;
   updateStreakDisplay();
   inputElement.focus(); // ⬅️ Focus automatique
@@ -80,7 +80,7 @@ function handleGuess(guess) {
   if (guess === characterName) {
     currentStreak++;
     showResult("Bravo ! C’est la bonne réponse 🎉", "green");
-    setTimeout(() => pickRandomCharacter(), 1500);
+    setTimeout(() => pickRandomCharacter(), 1000);
   } else {
     remainingTries--;
     currentStreak = 0;
@@ -90,7 +90,7 @@ function handleGuess(guess) {
       displayHint();
     } else {
       showResult(`Perdu ! C’était : ${characterName}`, "red");
-      setTimeout(() => pickRandomCharacter(), 3000);
+      setTimeout(() => pickRandomCharacter(), 1000);
     }
   }
 }
@@ -105,7 +105,7 @@ document.getElementById("guess-button").addEventListener("click", () => {
 passButton.addEventListener("click", () => {
   currentStreak = 0;
   showResult(`C’était : ${characterName}`, "gray");
-  setTimeout(() => pickRandomCharacter(), 3000);
+  setTimeout(() => pickRandomCharacter(), 1000);
 });
 
 // Appuyer sur Entrée = valider la réponse
