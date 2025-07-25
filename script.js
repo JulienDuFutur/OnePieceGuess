@@ -47,28 +47,31 @@ function pickRandomCharacter() {
   resultElement.textContent = "";
   remainingTries = 3;
   updateStreakDisplay();
+  inputElement.focus(); // ⬅️ Focus automatique
 }
+
 
 function handleGuess(guess) {
-	if (!guess) return;
+  if (!guess) return;
 
-	if (guess === characterName) {
-	  currentStreak++;
-	  showResult("Bravo ! C’est la bonne réponse 🎉", "green");
-	  setTimeout(() => pickRandomCharacter(), 1500);
-	} else {
-	  remainingTries--;
-	  currentStreak = 0;
-	  inputElement.value = ""; // ⬅️ Vider le champ
-	  if (remainingTries > 0) {
-		displayHint();
-	  } else {
-		showResult(`Perdu ! C’était : ${characterName}`, "red");
-		setTimeout(() => pickRandomCharacter(), 6000);
-	  }
-	}
-
+  if (guess === characterName) {
+    currentStreak++;
+    showResult("Bravo ! C’est la bonne réponse 🎉", "green");
+    setTimeout(() => pickRandomCharacter(), 1500);
+  } else {
+    remainingTries--;
+    currentStreak = 0;
+    inputElement.value = ""; // Vider
+    inputElement.focus();    // ⬅️ Re-focus même si erreur
+    if (remainingTries > 0) {
+      displayHint();
+    } else {
+      showResult(`Perdu ! C’était : ${characterName}`, "red");
+      setTimeout(() => pickRandomCharacter(), 3000);
+    }
+  }
 }
+
 
 
 document.getElementById("guess-button").addEventListener("click", () => {
@@ -80,6 +83,14 @@ passButton.addEventListener("click", () => {
   currentStreak = 0;
   showResult(`C’était : ${characterName}`, "gray");
   setTimeout(() => pickRandomCharacter(), 3000);
+});
+
+// Appuyer sur Entrée = valider la réponse
+inputElement.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const guess = inputElement.value.trim().toLowerCase();
+    handleGuess(guess);
+  }
 });
 
 
