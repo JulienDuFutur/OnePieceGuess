@@ -29,18 +29,36 @@ function showResult(message, color) {
 }
 
 function displayHint() {
-  const name = characterName;
-  if (remainingTries === 2) {
-  let hint = characterName.split("").map(() => "_").join(" ");
-  showResult(`Indice : ${hint}`, "orange");
-  } else if (remainingTries === 1) {
-  let hint = characterName
-    .split("")
-    .map((c, i) => (i === 0 ? c.toUpperCase() : "_"))
-    .join(" ");
-  showResult(`Indice : ${hint}`, "orange");
-}
-
+	const name = characterName;
+	if (remainingTries === 2) {
+    var hint = "";
+    for (let index = 0; index < characterName.length; index++) {
+      const element = characterName[index];
+      if (element == " ") {
+        hint = hint + " ";
+      }
+      else {
+        hint = hint + "_";  
+      }
+    }
+		showResult(`Indice : ${hint}`, "orange");
+	} 
+	else if (remainingTries === 1) {
+    var hint = "";
+    for (let index = 0; index < characterName.length; index++) {
+      const element = characterName[index];
+      if (index == 0) {
+        hint = element;
+      }
+      else if (element == " ") {
+        hint = hint + " ";
+      }
+      else {
+        hint = hint + "_";  
+      }
+    }
+		showResult(`Indice : ${hint}`, "orange");
+	}
 }
 
 function pickRandomCharacter() {
