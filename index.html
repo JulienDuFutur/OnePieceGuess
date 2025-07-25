@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Devine le personnage</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Devine le Personnage</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Qui est-ce ?</h1>
-  <div class="image-placeholder">
-     <img src="assets/goku.png" alt="Girl in a jacket"> 
+  <div class="container">
+    <h1>Devine le personnage !</h1>
+    <div id="image-container">
+      <img id="character-image" src="" alt="Personnage mystère"/>
+    </div>
+    <select id="guess-select">
+      <option value="">Choisis un nom...</option>
+    </select>
+    <button id="guess-button">Valider</button>
+    <p id="result"></p>
   </div>
-  <br/>
-  <input type="text" id="guess" placeholder="Entrez le nom..." />
-  <br/>
-  <button onclick="checkGuess()">Valider</button>
-  <p id="message"></p>
+
   <script src="script.js"></script>
 </body>
 </html>
