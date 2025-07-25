@@ -12,10 +12,11 @@
     <div id="image-container">
       <img id="character-image" src="" alt="Personnage mystère"/>
     </div>
-    <select id="guess-select">
-      <option value="">Choisis un nom...</option>
-    </select>
+
+    <input list="characters" id="guess-input" placeholder="Tape un nom...">
+    <datalist id="characters"></datalist>
     <button id="guess-button">Valider</button>
+
     <p id="result"></p>
   </div>
 
