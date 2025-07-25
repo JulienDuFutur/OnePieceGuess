@@ -64,7 +64,7 @@ function handleGuess(guess) {
 		displayHint();
 	  } else {
 		showResult(`Perdu ! C’était : ${characterName}`, "red");
-		setTimeout(() => pickRandomCharacter(), 3000);
+		setTimeout(() => pickRandomCharacter(), 6000);
 	  }
 	}
 
