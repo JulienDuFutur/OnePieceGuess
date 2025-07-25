@@ -4,13 +4,8 @@ const resultElement = document.getElementById("result");
 let characterName = "";
 
 async function fetchCharacterList() {
-  // Utilise le système de fichiers statiques d’un serveur HTTP
-  const response = await fetch("assets/");
-  const text = await response.text();
-
-  // Extraire les noms des fichiers .jpg depuis la réponse HTML du dossier
-  const matches = [...text.matchAll(/href="([^"]+\.jpg)"/g)];
-  const imageFiles = matches.map(match => match[1]);
+  const response = await fetch("assets/list.json");
+  const imageFiles = await response.json();
 
   const characterNames = imageFiles.map(file => {
     const name = file.replace(".jpg", "").replace(/_/g, " ");
