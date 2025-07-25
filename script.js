@@ -35,12 +35,12 @@ function displayHint() {
     for (let index = 0; index < characterName.length; index++) {
       const element = characterName[index];
       if (element == " ") {
-        hint = hint + " ";
+        hint = hint + "  " ;
       }
       else {
-        hint = hint + "_";  
+        hint = hint + "_ ";  
       }
-      hint = hint + " ";
+      hint = hint ;
     }
 		showResult(`Indice : ${hint}`, "orange");
 	} 
@@ -52,12 +52,11 @@ function displayHint() {
         hint = element;
       }
       else if (element == " ") {
-        hint = hint + " ";
+        hint = hint + "  ";
       }
       else {
-        hint = hint + "_";  
+        hint = hint + "_ ";  
       }
-      hint = hint + " ";
     }
 		showResult(`Indice : ${hint}`, "orange");
 	}
