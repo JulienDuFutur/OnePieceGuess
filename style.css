@@ -97,3 +97,7 @@ button {
   color: #555;
   margin-bottom: 15px;
 }
+
+#result {
+  white-space: pre;
+}
