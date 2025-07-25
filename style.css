@@ -43,12 +43,21 @@ h1 {
 
 #guess-input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
+  padding: 14px;
+  font-size: 18px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 2px solid #bbb;
+  border-radius: 10px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease;
 }
+
+#guess-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
 
 .buttons {
   display: flex;

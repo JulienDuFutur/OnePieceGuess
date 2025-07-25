@@ -50,22 +50,24 @@ function pickRandomCharacter() {
 }
 
 function handleGuess(guess) {
-  if (!guess) return;
+	if (!guess) return;
 
-  if (guess === characterName) {
-    currentStreak++;
-    showResult("Bravo ! C’est la bonne réponse 🎉", "green");
-    setTimeout(() => pickRandomCharacter(), 1500);
-  } else {
-    remainingTries--;
-    currentStreak = 0;
-    if (remainingTries > 0) {
-      displayHint();
-    } else {
-      showResult(`Perdu ! C’était : ${characterName}`, "red");
-      setTimeout(() => pickRandomCharacter(), 3000);
-    }
-  }
+	if (guess === characterName) {
+	  currentStreak++;
+	  showResult("Bravo ! C’est la bonne réponse 🎉", "green");
+	  setTimeout(() => pickRandomCharacter(), 1500);
+	} else {
+	  remainingTries--;
+	  currentStreak = 0;
+	  inputElement.value = ""; // ⬅️ Vider le champ
+	  if (remainingTries > 0) {
+		displayHint();
+	  } else {
+		showResult(`Perdu ! C’était : ${characterName}`, "red");
+		setTimeout(() => pickRandomCharacter(), 3000);
+	  }
+	}
+
 }
 
 
