@@ -31,12 +31,16 @@ function showResult(message, color) {
 function displayHint() {
   const name = characterName;
   if (remainingTries === 2) {
-    const hint = "_ ".repeat(name.length).trim();
-    showResult(`Indice : ${hint}`, "orange");
+  let hint = characterName.split("").map(() => "_").join(" ");
+  showResult(`Indice : ${hint}`, "orange");
   } else if (remainingTries === 1) {
-    const hint = `${name[0].toUpperCase()}${"_ ".repeat(name.length - 1)}`.trim();
-    showResult(`Indice : ${hint}`, "orange");
-  }
+  let hint = characterName
+    .split("")
+    .map((c, i) => (i === 0 ? c.toUpperCase() : "_"))
+    .join(" ");
+  showResult(`Indice : ${hint}`, "orange");
+}
+
 }
 
 function pickRandomCharacter() {
