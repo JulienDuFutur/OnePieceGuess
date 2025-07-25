@@ -7,6 +7,11 @@ const passButton = document.getElementById("pass-button");
 let characters = [];
 let characterName = "";
 let remainingTries = 3;
+let currentStreak = 0;
+
+function updateStreakDisplay() {
+  document.getElementById("streak").textContent = `Série : ${currentStreak} ✅`;
+}
 
 async function fetchCharacterList() {
   const response = await fetch("assets/list.json");
@@ -26,11 +31,9 @@ function showResult(message, color) {
 function displayHint() {
   const name = characterName;
   if (remainingTries === 2) {
-    // Hint 1: show underscores
     const hint = "_ ".repeat(name.length).trim();
     showResult(`Indice : ${hint}`, "orange");
   } else if (remainingTries === 1) {
-    // Hint 2: show first letter
     const hint = `${name[0].toUpperCase()}${"_ ".repeat(name.length - 1)}`.trim();
     showResult(`Indice : ${hint}`, "orange");
   }
@@ -43,24 +46,28 @@ function pickRandomCharacter() {
   inputElement.value = "";
   resultElement.textContent = "";
   remainingTries = 3;
+  updateStreakDisplay();
 }
 
 function handleGuess(guess) {
   if (!guess) return;
 
   if (guess === characterName) {
+    currentStreak++;
     showResult("Bravo ! C’est la bonne réponse 🎉", "green");
     setTimeout(() => pickRandomCharacter(), 1500);
   } else {
     remainingTries--;
+    currentStreak = 0;
     if (remainingTries > 0) {
       displayHint();
     } else {
       showResult(`Perdu ! C’était : ${characterName}`, "red");
-      setTimeout(() => pickRandomCharacter(), 2000);
+      setTimeout(() => pickRandomCharacter(), 3000);
     }
   }
 }
+
 
 document.getElementById("guess-button").addEventListener("click", () => {
   const guess = inputElement.value.trim().toLowerCase();
@@ -68,15 +75,16 @@ document.getElementById("guess-button").addEventListener("click", () => {
 });
 
 passButton.addEventListener("click", () => {
+  currentStreak = 0;
   showResult(`C’était : ${characterName}`, "gray");
-  setTimeout(() => pickRandomCharacter(), 1500);
+  setTimeout(() => pickRandomCharacter(), 3000);
 });
+
 
 async function initGame() {
   characters = await fetchCharacterList();
   if (characters.length === 0) return;
 
-  // Remplir datalist une fois
   datalistElement.innerHTML = "";
   characters
     .map(c => c.name)
