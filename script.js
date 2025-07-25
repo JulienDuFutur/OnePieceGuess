@@ -40,6 +40,7 @@ function displayHint() {
       else {
         hint = hint + "_";  
       }
+      hint = hint + " ";
     }
 		showResult(`Indice : ${hint}`, "orange");
 	} 
@@ -56,6 +57,7 @@ function displayHint() {
       else {
         hint = hint + "_";  
       }
+      hint = hint + " ";
     }
 		showResult(`Indice : ${hint}`, "orange");
 	}
